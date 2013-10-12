@@ -18,7 +18,7 @@ class TestCron(webapp2.RequestHandler):
 
         #test if parameter is extracted correctly
 
-        if local_time is None or appt_wait_time is None:
+        if local_time is None and appt_wait_time is None:
 			self.response.write('Cron task is not running\n')
 
         else:
