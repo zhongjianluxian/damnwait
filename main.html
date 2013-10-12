@@ -1,6 +1,6 @@
 <!DOCTYPE html> 
 <html> 
-<head> 
+  <head> 
     <title>DamnWait</title> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
@@ -11,135 +11,132 @@
     <script language="javascript" type="text/javascript" src="flot/jquery.flot.js"></script>
     <link href="flot/examples/examples.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
-        $(function() {
+      $(function() {
 
-            var d1 = [];
-            for (var i = 0; i < 20; ++i) {
-                d1.push([i, Math.sin(i)]);
-            }
+        var d1 = [];
+        for (var i = 0; i < 20; ++i) {
+          d1.push([i, Math.sin(i)]);
+        }
 
-            var data = [{ data: d1, label: "Pressure", color: "#333" }];
+        var data = [{ data: d1, label: "Pressure", color: "#333" }];
 
-            var markings = [
-                { color: "#f6f6f6", yaxis: { from: 1 } },
-                { color: "#f6f6f6", yaxis: { to: -1 } },
-                { color: "#000", lineWidth: 1, xaxis: { from: 2, to: 2 } },
-                { color: "#000", lineWidth: 1, xaxis: { from: 8, to: 8 } }
-            ];
+        var markings = [
+          { color: "#f6f6f6", yaxis: { from: 1 } },
+          { color: "#f6f6f6", yaxis: { to: -1 } },
+          { color: "#000", lineWidth: 1, xaxis: { from: 2, to: 2 } },
+          { color: "#000", lineWidth: 1, xaxis: { from: 8, to: 8 } }
+        ];
 
-            var placeholder = $("#503");
+        var placeholder = $("#503");
 
-            var plot = $.plot(placeholder, data, {
-                bars: { show: true, barWidth: 0.5, fill: 0.9 },
-                xaxis: { ticks: [], autoscaleMargin: 0.02 },
-                yaxis: { min: -2, max: 2 },
-                grid: { markings: markings }
-            });
-
-            var o = plot.pointOffset({ x: 2, y: -1.2});
-
-            // Append it to the placeholder that Flot already uses for positioning
-
-            placeholder.append("<div style='position:absolute;left:" + (o.left + 4) + "px;top:" + o.top + "px;color:#666;font-size:smaller'>Warming up</div>");
-
-            o = plot.pointOffset({ x: 8, y: -1.2});
-            placeholder.append("<div style='position:absolute;left:" + (o.left + 4) + "px;top:" + o.top + "px;color:#666;font-size:smaller'>Actual measurements</div>");
-
-            // Draw a little arrow on top of the last label to demonstrate canvas
-            // drawing
-
-            var ctx = plot.getCanvas().getContext("2d");
-            ctx.beginPath();
-            o.left += 4;
-            ctx.moveTo(o.left, o.top);
-            ctx.lineTo(o.left, o.top - 10);
-            ctx.lineTo(o.left + 10, o.top - 5);
-            ctx.lineTo(o.left, o.top);
-            ctx.fillStyle = "#000";
-            ctx.fill();
-
-            // Add the Flot version string to the footer
+        var plot = $.plot(placeholder, data, {
+          bars: { show: true, barWidth: 0.5, fill: 0.9 },
+          xaxis: { ticks: [], autoscaleMargin: 0.02 },
+          yaxis: { min: -2, max: 2 },
+          grid: { markings: markings }
         });
 
-        $(function() {
+        var o = plot.pointOffset({ x: 2, y: -1.2});
 
-            var d1 = [];
+        // Append it to the placeholder that Flot already uses for positioning
 
-            for (var i = 0; i < 14; i += 0.5) {
-                d1.push([i, Math.sin(i)]);
-            }
+        placeholder.append("<div style='position:absolute;left:" + (o.left + 4) + "px;top:" + o.top + "px;color:#666;font-size:smaller'>Warming up</div>");
 
-            var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
+        o = plot.pointOffset({ x: 8, y: -1.2});
+        placeholder.append("<div style='position:absolute;left:" + (o.left + 4) + "px;top:" + o.top + "px;color:#666;font-size:smaller'>Actual measurements</div>");
 
-            // A null signifies separate line segments
+        // Draw a little arrow on top of the last label to demonstrate canvas
+        // drawing
 
-            var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
+        var ctx = plot.getCanvas().getContext("2d");
+        ctx.beginPath();
+        o.left += 4;
+        ctx.moveTo(o.left, o.top);
+        ctx.lineTo(o.left, o.top - 10);
+        ctx.lineTo(o.left + 10, o.top - 5);
+        ctx.lineTo(o.left, o.top);
+        ctx.fillStyle = "#000";
+        ctx.fill();
 
-            $.plot("#599", [ d1, d2, d3 ]);
-        });
+        // Add the Flot version string to the footer
+      });
+
+      $(function() {
+
+        var d1 = [];
+
+        for (var i = 0; i < 14; i += 0.5) {
+          d1.push([i, Math.sin(i)]);
+        }
+
+        var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
+
+        // A null signifies separate line segments
+
+        var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
+
+        $.plot("#599", [ d1, d2, d3 ]);
+      });
     </script>
-</head> 
-<body> 
+  </head> 
+  <body> 
+    <div data-role="page">
 
-<div data-role="page">
-
-    <div data-role="header">
+      <div data-role="header">
         <h1>Select a DMV location</h1>
-    </div><!-- /header -->
+      </div><!-- /header -->
 
-    <div data-role="content">   
+      <div data-role="content">   
         <ul data-role="listview" data-inset="true" data-filter="true">
-        <li>
+          <li>
             <div data-role="collapsible" data-theme="a" data-content-theme="b">
-                <h2>San Francisco</h2>
-                <p>Address: 1377 Fell Street, San Francisco, CA 94117</p>
-                <div class="ui-grid-solo">
-                    <div id="503" style="width:350px;height:300px"></div>
+              <h2>San Francisco</h2>
+              <p>Address: 1377 Fell Street, San Francisco, CA 94117</p>
+              <div class="ui-grid-solo">
+                  <div id="503" style="width:350px;height:300px"></div>
+              </div>
+              <div class="ui-grid-solo">
+                <div data-role="fieldcontain">
+                  <fieldset data-role="controlgroup" data-type="horizontal">
+                    <input type="checkbox" name="mon" id="mon" class="custom" />
+                    <label for="mon">M</label>
+                    <input type="checkbox" name="tue" id="tue" class="custom" />
+                    <label for="tue">T</label>
+                    <input type="checkbox" name="wed" id="wed" class="custom" />
+                    <label for="wed">W</label>
+                    <input type="checkbox" name="thu" id="thu" class="custom" />
+                    <label for="thu">T</label>
+                    <input type="checkbox" name="fri" id="fri" class="custom" />
+                    <label for="fri">F</label>
+                    <input type="checkbox" name="all" id="all" class="custom" />
+                    <label for="all">ALL</label>
+                  </fieldset>
                 </div>
-                <div class="ui-grid-solo">
-                    <div data-role="fieldcontain">
-                        <fieldset data-role="controlgroup" data-type="horizontal">
-                            <input type="checkbox" name="mon" id="mon" class="custom" />
-                            <label for="mon">M</label>
-                            <input type="checkbox" name="tue" id="tue" class="custom" />
-                            <label for="tue">T</label>
-                            <input type="checkbox" name="wed" id="wed" class="custom" />
-                            <label for="wed">W</label>
-                            <input type="checkbox" name="thu" id="thu" class="custom" />
-                            <label for="thu">T</label>
-                            <input type="checkbox" name="fri" id="fri" class="custom" />
-                            <label for="fri">F</label>
-                            <input type="checkbox" name="all" id="all" class="custom" />
-                            <label for="all">ALL</label>
-                        </fieldset>
-                    </div>
-                </div>
+              </div>
             </div>
-            
-        </li>
-        <li>
+          </li>
+          <li>
             <div data-role="collapsible" data-theme="a" data-content-theme="c">
-                <h2>Daly City</h2>
-                <p>Address: 1500 Sullivan Avenue, Daly City, 94015, CA</p>
-                <div id="599" style="width:350px;height:300px"></div>
+              <h2>Daly City</h2>
+              <p>Address: 1500 Sullivan Avenue, Daly City, 94015, CA</p>
+              <div id="599" style="width:350px;height:300px"></div>
             </div>
-        </li>
-        <li>
+          </li>
+          <li>
             <div data-role="collapsible" data-theme="a" data-content-theme="a">
-                <h2>San Mateo</h2>
-                <p>Address: 425 N. Amphlett Boulevard, San Mateo, CA 94401</p>
-                <div id="593" style="width:350px;height:300px"></div>
+              <h2>San Mateo</h2>
+              <p>Address: 425 N. Amphlett Boulevard, San Mateo, CA 94401</p>
+              <div id="593" style="width:350px;height:300px"></div>
             </div>
-        </li>
-        <li>
+          </li>
+          <li>
             <div data-role="collapsible" data-theme="a" data-content-theme="a">
-                <h2>Redwood City</h2>
-                <p>Address: 300 Brewster Avenue, Redwood City, 94063</p>
-                <div id="548" style="width:350px;height:300px"></div>
+              <h2>Redwood City</h2>
+              <p>Address: 300 Brewster Avenue, Redwood City, 94063</p>
+              <div id="548" style="width:350px;height:300px"></div>
             </div>
-        </li>
+          </li>
         </ul>   
-
 
         <div data-role="content" id="503"><a name="San Francisco"></a>
         </div>
@@ -149,9 +146,7 @@
         </div>
         <div id="548"><a name="Redwood City"></a>
         </div>
-    </div>
-
-</div><!-- /page -->
-
-</body>
+      </div>
+    </div><!-- /page -->
+  </body>
 </html>
