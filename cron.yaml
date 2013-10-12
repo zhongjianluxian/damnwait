@@ -1,2 +1,4 @@
 cron:
-- description: 
+- description: DMV webpage parsing job
+  url: /cron-tasks/hack-dmv
+  schedule: every 1 minutes

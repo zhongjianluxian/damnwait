@@ -1,12 +1,8 @@
 import webapp2
 
-
-class MainPage(webapp2.RequestHandler):
-    def get(self):
-        self.response.headers['Content-Type'] = 'text/plain'
-        self.response.write('Welcome to damnwait!')
-
-
+from handlers.mainpage import MainPage
+from handlers.testcron import TestCron
 
 app = webapp2.WSGIApplication([('/', MainPage),
+                               ('/testcron/?', TestCron)
                                ], debug=True)
