@@ -43,8 +43,6 @@ class HackDMV(webapp2.RequestHandler):
             
             memcache.set("sample_local_time", local_time)
 
-            sys.exit(1)
-
         else:
             self.response.write("Office is opening")
             appt_wait_time = self.parseTime(soup('span',{'id':'apptWaitTime'})[0].contents[0])
@@ -53,7 +51,6 @@ class HackDMV(webapp2.RequestHandler):
             memcache.set("appt_wait_time", appt_wait_time)
             memcache.set("nonappt_wait_time", nonappt_wait_time)
 
-            sys.exit(0)
 
 
         
