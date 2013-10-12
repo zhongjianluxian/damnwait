@@ -32,19 +32,27 @@ class HackDMV(webapp2.RequestHandler):
         soup = BeautifulSoup(urllib2.urlopen("http://apps.dmv.ca.gov/fo/offices/appl/fo_data_read.jsp?foNumb=%s" %id))
         if "display:block" in soup('div', {'id':'showClosedDiv'})[0]['style']:
             self.response.write('Office closed')
-            with open("../cron.yaml") as f:
-                for line in f:
-                    pass
-                last = line
-            tz = (last.split(":")[-1]).strip()
+            # with open("../cron.yaml") as f:
+            #     for line in f:
+            #         pass
+            #     last = line
+            #tz = (last.split(":")[-1]).strip()
+            tz = "America/Los_Angeles"
             local_timezone = timezone("%s" %tz)
             local_time = local_timezone.localize(datetime.today())
+            
+            memcache.set("sample_local_time", local_time)
+
             sys.exit(1)
 
         else:
             self.response.write("Office is opening")
             appt_wait_time = self.parseTime(soup('span',{'id':'apptWaitTime'})[0].contents[0])
             nonappt_wait_time = self.parseTime(soup('span',{'id':'nonApptWaitTime'})[0].contents[0])
+            
+            memcache.set("appt_wait_time", appt_wait_time)
+            memcache.set("nonappt_wait_time", nonappt_wait_time)
+
             sys.exit(0)
 
 
