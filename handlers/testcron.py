@@ -5,14 +5,7 @@ class TestCron(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'text/plain'
 
-        # cnt = memcache.get("cron_key")
-
-        # if cnt is None:
-        # 	self.response.write('Cron task is not running\n')
-        # else:
-        # 	self.response.write('U have counted to %s' % cnt)
-        
-        local_time = memcache.get("local_time")
+        local_time = memcache.get("sample_local_time")
         appt_wait_time = memcache.get("appt_wait_time")
         nonappt_wait_time = memcache.get("nonappt_wait_time")
 
