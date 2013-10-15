@@ -21,7 +21,7 @@ class HackDMV(webapp2.RequestHandler):
     def get(self):
 
         #read the dmv_info file
-        f = open(os.path.dirname(__file__)+"/dmv_info.json")
+        f = open(os.path.dirname(__file__)+"/../dmv_info.json")
         dmv_list = json.load(f)
         id_list = [ int(dmv['dmv_id']) for dmv in dmv_list ]
 
