@@ -12,7 +12,7 @@ from db import dmv
 
 class HackDMV(webapp2.RequestHandler):
 
-    def convertToMinutes(wait_time):
+    def convertToMinutes(self, wait_time):
         li = wait_time.split(":")
         return int(li[0])*60 + int(li[1])
     
