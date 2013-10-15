@@ -23,7 +23,7 @@ class HackDMV(webapp2.RequestHandler):
         #read the dmv_info file
         f = open(os.path.dirname(__file__)+"/../dmv_info.json")
         dmv_list = json.load(f)
-        id_list = [ int(dmv['dmv_id']) for dmv in dmv_list ]
+        id_list = [ int(dmv_office['dmv_id']) for dmv_office in dmv_list ]
 
         #extract wait time information
         for id in id_list:
