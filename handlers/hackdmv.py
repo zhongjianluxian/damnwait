@@ -8,6 +8,7 @@ from google.appengine.api import memcache
 from bs4 import BeautifulSoup
 from pytz import timezone
 from datetime import datetime
+from db import DMV
 
 class HackDMV(webapp2.RequestHandler):
 
@@ -28,10 +29,19 @@ class HackDMV(webapp2.RequestHandler):
             memcache.set("sample_local_time", local_time)
 
         else:
-            self.response.write("Office is opening")
             appt_wait_time = self.convertToMinutes(str(soup('span',{'id':'apptWaitTime'})[0].contents[0]))
             nonappt_wait_time = self.convertToMinutes(str(soup('span',{'id':'nonApptWaitTime'})[0].contents[0]))
             
+            #insert data into data store
+            t = DMV( dmv_id = id,
+                sample_tm = datetime.now(),
+                non_appt_wait_mins = nonappt_wait_time,
+                appt_wait_mins = appt_wait_time
+                )
+            
+            t.put()
+
+            #for cron job testing purpose
             memcache.set("appt_wait_time", appt_wait_time)
             memcache.set("nonappt_wait_time", nonappt_wait_time)
 
