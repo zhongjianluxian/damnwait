@@ -10,6 +10,7 @@ from pytz import timezone
 from datetime import datetime
 from db import dmv
 import json
+import os
 
 class HackDMV(webapp2.RequestHandler):
 
