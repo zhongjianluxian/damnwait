@@ -1,24 +1,24 @@
 [
     {
-        "id": "503",
+        "dmv_id": "503",
         "name": "San Francisco",
         "tel": "(800)777-0133",
         "address": "1377 Fell Street, San Francisco, 94117"
     },
     {
-        "id": "599",
+        "dmv_id": "599",
         "name": "Daly City",
         "tel": "(800)777-0133",
         "address": "1500 Sullivan Avenue Daly City, 94015"
     },
     {
-        "id": "593",
+        "dmv_id": "593",
         "name": "San Mateo",
         "tel": "(800)777-0133",
         "address": "425 N. Amphlett Boulevard, San Mateo, 94401"
     },
     {
-        "id": "548",
+        "dmv_id": "548",
         "name": "Redwood City",
         "tel": "(800)777-0133",
         "address": "300 Brewster Avenue, Redwood City, 94063"
