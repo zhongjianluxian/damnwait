@@ -11,7 +11,7 @@ from datetime import datetime
 
 class HackDMV(webapp2.RequestHandler):
 
-    def parseTime(wait_time):
+    def convertToMinutes(wait_time):
         li = wait_time.split(":")
         return int(li[0])*60 + int(li[1])
     
@@ -29,8 +29,8 @@ class HackDMV(webapp2.RequestHandler):
 
         else:
             self.response.write("Office is opening")
-            appt_wait_time = self.parseTime(soup('span',{'id':'apptWaitTime'})[0].contents[0])
-            nonappt_wait_time = self.parseTime(soup('span',{'id':'nonApptWaitTime'})[0].contents[0])
+            appt_wait_time = self.convertToMinutes(str(soup('span',{'id':'apptWaitTime'})[0].contents[0]))
+            nonappt_wait_time = self.convertToMinutes(str(soup('span',{'id':'nonApptWaitTime'})[0].contents[0]))
             
             memcache.set("appt_wait_time", appt_wait_time)
             memcache.set("nonappt_wait_time", nonappt_wait_time)
