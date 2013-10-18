@@ -43,7 +43,7 @@ class HackDMV(webapp2.RequestHandler):
                     sample_tm = local_time,
                     non_appt_wait_mins = nonappt_wait_time,
                     appt_wait_mins = appt_wait_time,
-                    weekday = sample_tm.weekday()
+                    weekday = lcoal_time.weekday()
                     )
                 
                 t.put()
