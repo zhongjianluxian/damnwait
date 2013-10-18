@@ -6,7 +6,6 @@ import urllib2
 import webapp2
 from google.appengine.api import memcache
 from bs4 import BeautifulSoup
-from pytz import timezone
 from datetime import datetime
 from db import dmv
 import json
@@ -27,8 +26,8 @@ class HackDMV(webapp2.RequestHandler):
 
 
         #get local time
-        local_timezone = timezone("America/Los_Angeles")
-        local_time = datetime.today()#local_timezone.localize(datetime.today())
+        #local_timezone = timezone("America/Los_Angeles")
+        local_time = datetime.today()
 
         #extract wait time information
         for id in id_list:
