@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+    <title>DamnWait</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+  </head> 
+  <body> 
+    <div data-role="page">
+
+      	<div data-role="header">
+        	<h1>Select a DMV location</h1>
+      	</div><!-- /header -->
+
+      	<div data-role="fieldcontain">
+		    <fieldset data-role="controlgroup" data-type="horizontal">
+		         	<input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" checked="checked" />
+		         	<label for="radio-choice-1">San Francisco</label>
+
+		         	<input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2"  />
+		         	<label for="radio-choice-2">Daly City</label>
+
+		         	<input type="radio" name="radio-choice-1" id="radio-choice-3" value="choice-3"  />
+		         	<label for="radio-choice-3">San Mateo</label>
+
+		         	<input type="radio" name="radio-choice-1" id="radio-choice-4" value="choice-4"  />
+		         	<label for="radio-choice-4">Redwood City</label>
+		    </fieldset>
+		</div>
+
+		<div>
+			<img src="../static/images/icon.jpg"/>
+		</div>
+
+		<label for="select-choice-0" class="select">Start time</label>
+		<select name="select-choice-0" id="select-choice-0">
+		   <option value="day">Today</option>
+		   <option value="week">Past week</option>
+		   <option value="month">Past month</option>
+		</select>
+
+    </div><!-- /page -->
+  </body>
+</html>
