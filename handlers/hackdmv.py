@@ -25,14 +25,15 @@ class HackDMV(webapp2.RequestHandler):
         dmv_list = json.load(f)
         id_list = [ dmv_office['dmv_id'] for dmv_office in dmv_list ]
 
+
+        #get local time
+        local_timezone = timezone("America/Los_Angeles")
+        local_time = local_timezone.localize(datetime.today())
+
         #extract wait time information
         for id in id_list:
             soup = BeautifulSoup(urllib2.urlopen("http://apps.dmv.ca.gov/fo/offices/appl/fo_data_read.jsp?foNumb=%s" %id))
             if "display:block" in soup('div', {'id':'showClosedDiv'})[0]['style']:
-                tz = "America/Los_Angeles"
-                local_timezone = timezone("%s" %tz)
-                local_time = local_timezone.localize(datetime.today())
-                
                 memcache.set("sample_local_time", local_time)
 
             else:
@@ -41,9 +42,10 @@ class HackDMV(webapp2.RequestHandler):
                 
                 #insert data into data store
                 t = dmv.DMV( dmv_id = id,
-                    sample_tm = datetime.now(),
+                    sample_tm = local_time,
                     non_appt_wait_mins = nonappt_wait_time,
-                    appt_wait_mins = appt_wait_time
+                    appt_wait_mins = appt_wait_time,
+                    weekday = sample_tm.weekday()
                     )
                 
                 t.put()
