@@ -28,7 +28,7 @@ class HackDMV(webapp2.RequestHandler):
 
         #get local time
         local_timezone = timezone("America/Los_Angeles")
-        local_time = local_timezone.localize(datetime.today())
+        local_time = datetime.today()#local_timezone.localize(datetime.today())
 
         #extract wait time information
         for id in id_list:
