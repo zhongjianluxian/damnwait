@@ -9,4 +9,4 @@ class MainPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/html'
         # self.response.write('<h1>Welcome to damnwait!</h1>')
 
-        self.response.write(render_str("main.html"))
+        self.response.write(render_str("test.html"))
