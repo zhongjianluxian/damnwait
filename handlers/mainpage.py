@@ -18,7 +18,7 @@ class MainPage(webapp2.RequestHandler):
         G.color('76A4FB')
         G.line(2)
         G.axes('x')
-        G.size(600,300)
+        G.size(300,150)
         G.axes.range(0,10,50,5)
 
         template_values = {
