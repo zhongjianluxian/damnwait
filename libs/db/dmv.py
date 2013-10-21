@@ -5,5 +5,5 @@ class DMV(db.Model):
     sample_tm = db.DateTimeProperty(auto_now_add = True)
     non_appt_wait_mins = db.IntegerProperty(required = True)
     appt_wait_mins = db.IntegerProperty(required = True)
-    weekdays = db.IntegerProperty(required = False)
+    weekday = db.IntegerProperty(required = False)
     
