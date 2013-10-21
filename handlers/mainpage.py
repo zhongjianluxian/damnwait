@@ -14,7 +14,7 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'text/html'
         
-        G = Line('abcdefghijklmnopqrstsrqponmlkjihgf',encoding='simple')
+        G = Line('abcdefghijklmnopqrstsrqponmlkjihgfdasdsadhaskldhaskldhsakjldhdhakjhdwhwjhkjawhdjkahdjk',encoding='simple')
         G.color('76A4FB')
         G.line(4)
         G.size(600, 300)
