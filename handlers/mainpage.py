@@ -29,3 +29,9 @@ class MainPage(webapp2.RequestHandler):
 			"chart_src": str(G)
 			}
         self.response.write(render_str("home.html", template_values))
+
+class WaitTimeQuery(webapp2.RequestHandler):
+    
+    def post(self):
+        self.response.headers['Content-Type'] = 'text/html'
+        self.response.write("<h1>this is a test</h1>")
