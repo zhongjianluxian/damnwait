@@ -39,6 +39,6 @@ class WaitTimeQuery(webapp2.RequestHandler):
         office = self.request.get("office")
         weekday = self.request.get("weekday")
         
-    
+        
 
         self.response.write(office + weekday)
