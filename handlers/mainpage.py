@@ -8,6 +8,8 @@ import os
 
 from GChartWrapper import *
 from utils import render_str
+from db import dmv
+from google.appengine.ext.db import Query
 
 class MainPage(webapp2.RequestHandler):
     
@@ -34,4 +36,9 @@ class WaitTimeQuery(webapp2.RequestHandler):
     
     def post(self):
         self.response.headers['Content-Type'] = 'text/html'
-        self.response.write("<h1>this is a test</h1>")
+        office = self.request.get("office")
+        weekday = self.request.get("weekday")
+        
+    
+
+        self.response.write(office + weekday)
