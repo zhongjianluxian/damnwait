@@ -1,9 +1,9 @@
-from google.appengine.ext import db
+from google.appengine.ext import ndb
 
-class DMV(db.Model):
-    dmv_id = db.StringProperty(required = True)
-    sample_tm = db.DateTimeProperty(auto_now_add = True)
-    non_appt_wait_mins = db.IntegerProperty(required = True)
-    appt_wait_mins = db.IntegerProperty(required = True)
-    weekday = db.IntegerProperty(required = False)
+class DMV(ndb.Model):
+    dmv_id = ndb.StringProperty(required = True)
+    sample_tm = ndb.DateTimeProperty(auto_now_add = True)
+    non_appt_wait_mins = ndb.IntegerProperty(required = True)
+    appt_wait_mins = ndb.IntegerProperty(required = True)
+    weekday = ndb.IntegerProperty()
     

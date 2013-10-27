@@ -9,7 +9,7 @@ import os
 from GChartWrapper import *
 from utils import render_str
 from db import dmv
-from google.appengine.ext.db import Query
+from google.appengine.ext.ndb import Query
 
 class MainPage(webapp2.RequestHandler):
     
@@ -30,6 +30,9 @@ class WaitTimeQuery(webapp2.RequestHandler):
         
         q = dmv.DMV.all()
         
-        print q.get()
+        a= q.fetch(limit = 5)
 
-        self.response.write(q.get())
+
+
+        self.response.write(len(a))
+        
