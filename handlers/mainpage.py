@@ -28,7 +28,7 @@ class WaitTimeQuery(webapp2.RequestHandler):
         office = self.request.get("office")
         weekday = self.request.get("weekday")
         
-        q = dmv.DMV.all()
+        q = dmv.DMV.query()
         
         a= q.fetch(limit = 5)
 
