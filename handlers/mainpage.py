@@ -29,10 +29,11 @@ class WaitTimeQuery(webapp2.RequestHandler):
         weekday = self.request.get("weekday")
         
         q = dmv.DMV.query()
+        q.filter('weekday =', int(weekday)).filter('dmv_id = ', office)
         
         a= q.fetch()
 
 
 
-        self.response.write(len(a), a)
+        self.response.write(a)
         
