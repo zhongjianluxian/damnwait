@@ -9,6 +9,7 @@ import os
 from GChartWrapper import *
 from utils import render_str
 from db import dmv
+from google.appengine.ext import ndb
 from google.appengine.ext.ndb import Query
 
 class MainPage(webapp2.RequestHandler):
@@ -29,7 +30,7 @@ class WaitTimeQuery(webapp2.RequestHandler):
         weekday = self.request.get("weekday")
         
         q = dmv.DMV.query()
-        q.filter('weekday =', int(weekday)).filter('dmv_id = ', office)
+        q.filter(ndb.GenericProperty('dmv_id') == office).filter(ndb.GenericProperty('weekday') == int(weekday))
         
         a= q.fetch()
 
