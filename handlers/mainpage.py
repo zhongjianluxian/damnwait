@@ -30,9 +30,9 @@ class WaitTimeQuery(webapp2.RequestHandler):
         
         q = dmv.DMV.query()
         
-        a= q.fetch(limit = 5)
+        a= q.fetch()
 
 
 
-        self.response.write(len(a))
+        self.response.write(len(a), a)
         
