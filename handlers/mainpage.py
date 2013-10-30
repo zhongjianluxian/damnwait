@@ -29,8 +29,7 @@ class WaitTimeQuery(webapp2.RequestHandler):
         office = self.request.get("office")
         weekday = self.request.get("weekday")
         
-        q = dmv.DMV.query()
-        q.filter(ndb.GenericProperty('dmv_id') == office).filter(ndb.GenericProperty('weekday') == int(weekday))
+        q = dmv.DMV.query().filter(ndb.GenericProperty('dmv_id') == office).filter(ndb.GenericProperty('weekday') == int(weekday))
         
         a= q.fetch()
 
