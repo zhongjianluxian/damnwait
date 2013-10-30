@@ -2,7 +2,19 @@
 function submit(weekday)
 {
   if(typeof(weekday)==="undefined")
-    weekday = 4;
+  { 
+    if(document.getElementById('mon')["checked"] === true)
+      weekday = 0;
+    else if(document.getElementById('tue')["checked"] === true)
+      weekday = 1;
+    else if(document.getElementById('wed')["checked"] === true)
+      weekday = 2;
+    else if(document.getElementById('thu')["checked"] === true)
+      weekday = 3;
+    else if(document.getElementById('fri')["checked"] === true)
+      weekday = 4;
+  
+  }
   var select = document.getElementById("office");
   var option = select.options[select.selectedIndex].id;
   var input = document.getElementById("mon");
