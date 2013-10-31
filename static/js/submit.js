@@ -23,7 +23,7 @@ function submit(weekday)
   	{
   		if (xmlhttp.readyState==4 && xmlhttp.status==200)
     	{
-    		document.getElementById("head").innerHTML=xmlhttp.responseText;
+    		document.getElementById("data")["src"]=xmlhttp.responseText;
     	}
   	}
 	xmlhttp.open("POST","/submit/",true);
