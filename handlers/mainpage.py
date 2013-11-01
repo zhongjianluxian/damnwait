@@ -51,9 +51,8 @@ class WaitTimeQuery(webapp2.RequestHandler):
         G.line(4)
         G.size(600, 300)
         G.axes('xy')
-        #G.axes.range(0,8,17,1)
-        #G.axes.range(1,0,200,50)
-        #G.axes.label(0, '8AM', '9', '10', '11', '12PM', '1', '2', '3', '4', '5PM')
+        G.scale(480, 1020)
+        G.axes.label(0, '8AM', '9', '10', '11', '12PM', '1', '2', '3', '4', '5PM')
         G.marker('fMax','red',0,19,10)
         G.grid(8,17,1,0)
 
