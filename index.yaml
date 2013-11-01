@@ -1,0 +1,8 @@
+indexes:
+
+- kind: DMV
+  properties:
+  - name: dmv_id
+  - name: weekday
+  - name: sample_tm
+    direction: desc
