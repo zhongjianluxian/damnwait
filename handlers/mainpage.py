@@ -16,20 +16,9 @@ class MainPage(webapp2.RequestHandler):
     
     def get(self):
         self.response.headers['Content-Type'] = 'text/html'
-        
-        G = Line('abcdefghijklmnopqrstsrqponmlkjihgfdasdsadhaskldhaskldhsakjldhdhakjhdwhwjhkjawhdjkahdjk',encoding='simple')
-        G.color('76A4FB')
-        G.line(4)
-        G.size(600, 300)
-        G.axes('xy')
-        G.axes.range(0,8,17,1)
-        G.axes.range(1,0,200,50)
-        G.axes.label(0, '8AM', '9', '10', '11', '12PM', '1', '2', '3', '4', '5PM')
-        G.marker('fMax','red',0,19,10)
-        G.grid(8,17,1,0)
 
         template_values = {
-                        "chart_src": str(G)
+                        "chart_src": "../static/images/icon1.jpg"
                         }
         self.response.write(render_str("home.html", template_values))
 class WaitTimeQuery(webapp2.RequestHandler):
@@ -49,13 +38,14 @@ class WaitTimeQuery(webapp2.RequestHandler):
         for r in rst:
             node_appt.append(int(r.appt_wait_mins))
             node_nonappt.append(int(r.non_appt_wait_mins))
-            node_sample_tm.append(r.sample_tm)
+            node_sample_tm.append( int(r.sample_tm.minute) + int(r.sample_tm.hour)*60)
 
         G = LineXY( [ 
                    node_sample_tm, # x values
                    node_appt, # y values, etc.
+                   node_sample_tm,
                    node_nonappt,
-                   ['-1'], # domain not found, interpolated
+                   
                   ])
         G.color('76A4FB')
         G.line(4)
