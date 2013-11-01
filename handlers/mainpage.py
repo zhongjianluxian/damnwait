@@ -11,7 +11,6 @@ from utils import render_str
 from db import dmv
 from google.appengine.ext import ndb
 from google.appengine.ext.ndb import Query
-from operator import itemgetter
 
 class MainPage(webapp2.RequestHandler):
     
@@ -29,14 +28,12 @@ class WaitTimeQuery(webapp2.RequestHandler):
         office = self.request.get("office")
         weekday = self.request.get("weekday")
         
-        q = dmv.DMV.query().filter(ndb.GenericProperty('dmv_id') == office).filter(ndb.GenericProperty('weekday') == int(weekday))
+        q = dmv.DMV.query().filter(ndb.GenericProperty('dmv_id') == office).filter(ndb.GenericProperty('weekday') == int(weekday)).order('sample_tm')
         rst = q.fetch()
 
         node_appt = []
         node_nonappt = []
         node_sample_tm = []
-
-        rst.sort(key=itemgetter('sample_tm'))
 
         for r in rst:
             node_appt.append(int(r.appt_wait_mins))
