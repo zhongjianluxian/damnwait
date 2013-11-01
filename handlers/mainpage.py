@@ -36,7 +36,7 @@ class WaitTimeQuery(webapp2.RequestHandler):
         node_nonappt = []
         node_sample_tm = []
 
-        r.sort(key=itemgetter('sample_tm'))
+        rst.sort(key=itemgetter('sample_tm'))
 
         for r in rst:
             node_appt.append(int(r.appt_wait_mins))
