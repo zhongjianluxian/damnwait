@@ -11,6 +11,7 @@ from utils import render_str
 from db import dmv
 from google.appengine.ext import ndb
 from google.appengine.ext.ndb import Query
+from operator import itemgetter
 
 class MainPage(webapp2.RequestHandler):
     
@@ -35,6 +36,8 @@ class WaitTimeQuery(webapp2.RequestHandler):
         node_nonappt = []
         node_sample_tm = []
 
+        r.sort(key=itemgetter('sample_tm'))
+
         for r in rst:
             node_appt.append(int(r.appt_wait_mins))
             node_nonappt.append(int(r.non_appt_wait_mins))
@@ -47,12 +50,13 @@ class WaitTimeQuery(webapp2.RequestHandler):
                    node_nonappt,
                    
                   ])
-        G.color('76A4FB')
-        G.line(4)
+        G.color('green', red)
+        G.line(4, 4)
         G.size(600, 300)
         G.axes('xy')
-        G.scale(*[480, 1020, 0, 180] * 2)
+        G.scale(*[480, 1020, 0, 120] * 2)
         G.axes.label(0, '8AM', '9', '10', '11', '12PM', '1', '2', '3', '4', '5PM')
+        G.axes.label(1, 0,30,60,90,120)
         G.marker('fMax','red',0,19,10)
         G.line(2,4,1)
 
