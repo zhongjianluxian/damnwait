@@ -27,5 +27,5 @@ libraries:
   - name: dmv_id
   - name: weekday
   - name: sample_tm
-    direction: asc
+    direction: desc
 
