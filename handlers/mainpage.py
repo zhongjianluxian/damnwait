@@ -47,7 +47,7 @@ class WaitTimeQuery(webapp2.RequestHandler):
                    node_nonappt,
                    
                   ])
-        G.color('green', red)
+        G.color('green', 'red')
         G.line(4, 4)
         G.size(600, 300)
         G.axes('xy')
