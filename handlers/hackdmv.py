@@ -15,8 +15,12 @@ class HackDMV(webapp2.RequestHandler):
 
     def convertToMinutes(self, wait_time):
         li = wait_time.split(":")
-        return int(li[0])*60 + int(li[1])
-    
+        if len(li) == 2:
+            return int(li[0])*60 + int(li[1])
+        else if len(li) == 1:
+            return li[0]
+        return 120
+
     def get(self):
 
         #read the dmv_info file
