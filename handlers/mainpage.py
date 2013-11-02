@@ -53,9 +53,10 @@ class WaitTimeQuery(webapp2.RequestHandler):
         G.axes('xy')
         G.scale(*[480, 1020, 0, 120] * 2)
         G.axes.label(0, '8AM', '9', '10', '11', '12PM', '1', '2', '3', '4', '5PM')
-        G.axes.label(1, 0,30,60,90,120)
-        G.marker('fMax','red',0,19,10)
+        G.axes.label(1, "0min","30","60","90","120min")
         G.line(2,4,1)
+        G.legend('With an appointment', 'Without an appointment')
+        G.title("Wait time on selected weekday/office")
 
         self.response.write(str(G))
 
