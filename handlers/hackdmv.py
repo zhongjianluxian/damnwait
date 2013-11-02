@@ -17,7 +17,7 @@ class HackDMV(webapp2.RequestHandler):
         li = wait_time.split(":")
         if len(li) == 2:
             return int(li[0])*60 + int(li[1])
-        else if len(li) == 1:
+        elif len(li) == 1:
             return li[0]
         return 120
 
