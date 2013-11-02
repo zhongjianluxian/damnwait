@@ -11,6 +11,7 @@ from utils import render_str
 from db import dmv
 from google.appengine.ext import ndb
 from google.appengine.ext.ndb import Query
+from datetime import datetime, timedelta
 
 class MainPage(webapp2.RequestHandler):
     
@@ -36,9 +37,10 @@ class WaitTimeQuery(webapp2.RequestHandler):
         node_sample_tm = []
 
         for r in rst:
-            node_appt.append(int(r.appt_wait_mins))
-            node_nonappt.append(int(r.non_appt_wait_mins))
-            node_sample_tm.append( int(r.sample_tm.minute) + int(r.sample_tm.hour)*60)
+            if r.sample_tm > datetime.now() - timedelta(weeks=1):
+                node_appt.append(int(r.appt_wait_mins))
+                node_nonappt.append(int(r.non_appt_wait_mins))
+                node_sample_tm.append( int(r.sample_tm.minute) + int(r.sample_tm.hour)*60)
 
         G = LineXY( [ 
                    node_sample_tm, # x values

@@ -1,5 +1,5 @@
 cron:
 - description: DMV webpage parsing job
   url: /cron-tasks/hack-dmv
-  schedule: every 15 minutes
+  schedule: every 5 minutes
   timezone: America/Los_Angeles
