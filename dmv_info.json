@@ -22,5 +22,35 @@
         "name": "Redwood City",
         "tel": "(800)777-0133",
         "address": "300 Brewster Avenue, Redwood City, 94063"
+    },
+    {
+        "dmv_id": "632",
+        "name": "Santa Clara",
+        "tel": "(800)777-0133",
+        "address": "3665 Flora Vista Avenue, Santa Clara, 95051"
+    },
+    {
+        "dmv_id": "516",
+        "name": "San Jose",
+        "tel": "(800)777-0133",
+        "address": "111 W. Alma Avenue, San Jose, 95110"
+    },
+    {
+        "dmv_id": "644",
+        "name": "Fremont",
+        "tel": "(800)777-0133",
+        "address": "4287 Central Avenue, Fremont, 94536"
+    },
+    {
+        "dmv_id": "579",
+        "name": "Hayward",
+        "tel": "(800)777-0133",
+        "address": "150 Jackson Street, Hayward, 94544"
+    },
+    {
+        "dmv_id": "504",
+        "name": "Oakland",
+        "tel": "(800)777-0133",
+        "address": "5300 Claremont Avenue, Oakland, 94618"
     }
 ]
